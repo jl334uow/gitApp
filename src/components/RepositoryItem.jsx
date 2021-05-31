@@ -1,16 +1,30 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-const RepositoryItem = ({props}) =>{
-
+import {View, Text, Image, StyleSheet} from 'react-native';
+const RepositoryItem = (props) =>{
+    const styles = StyleSheet.create({
+        container: {
+          paddingTop: 50,
+        },
+        tinyLogo: {
+          width: 50,
+          height: 50,
+          borderRadius: 50/2
+        },
+        logo: {
+          width: 66,
+          height: 58,
+        },
+      });
     return(
         <View>
-            <Text>Full name: {props.item.fullName}</Text>
-            <Text>Description: {props.item.description}</Text>
-            <Text>Language: {props.item.language}</Text>
-            <Text>Stars: {props.item.stargazersCount}</Text>
-            <Text>Forks: {props.item.forksCount}</Text>
-            <Text>Reviews: {props.item.reviewCount}</Text>
-            <Text>Rating: {props.item.ratingAverage}</Text>
+            <Image style = {styles.tinyLogo} source = {{uri:props.ownerAvatarUrl}}/>
+            <Text>Full name: {props.fullName}</Text>
+            <Text>Description: {props.description}</Text>
+            <Text>Language: {props.language}</Text>
+            <Text>Stars: {props.stargazersCount}</Text>
+            <Text>Forks: {props.forksCount}</Text>
+            <Text>Reviews: {props.reviewCount}</Text>
+            <Text>Rating: {props.ratingAverage}</Text>
         </View>
     )
   };

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import {SafeAreaView, FlatList, View, Text ,StyleSheet } from 'react-native';
+import {SafeAreaView, FlatList, View ,StyleSheet } from 'react-native';
 import RepositoryItem from './RepositoryItem.jsx';
+import Text from './Text.jsx';
 const styles = StyleSheet.create({
   separator: {
-    height: 10,
+    height: 10
   },
 });
 
@@ -53,25 +54,23 @@ const repositories = [
     ownerAvatarUrl: 'https://avatars3.githubusercontent.com/u/13142323?v=4',
   },
 ];
-const Item = ({item}) =>(
-  <View>
-    <Text>Full name: {item.fullName}</Text>
-    <Text>Description: {item.description}</Text>
-    <Text>Language: {item.language}</Text>
-    <Text>Stars: {item.stargazersCount}</Text>
-    <Text>Forks: {item.forksCount}</Text>
-    <Text>Reviews: {item.reviewCount}</Text>
-    <Text>Rating: {item.ratingAverage}</Text>
-  </View>
-);
 
 const renderItem = ({item}) => {
-  console.log('item rendered: ' + item.id)
+  console.log('render item ')
   return(
-  // <Item item = {item}/>
-  <RepositoryItem item = {item}/>
-  );
-};
+<RepositoryItem 
+item = {item}
+fullName = {item.fullName}
+description = {item.description}
+language = {item.language}
+stargazersCount = {item.stargazersCount}
+forksCount = {item.forksCount}
+reviewCount = {item.reviewCount}
+ratingAverage = {item.ratingAverage}
+ownerAvatarUrl = {item.ownerAvatarUrl}
+/>
+  )
+}
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
@@ -79,14 +78,16 @@ const RepositoryList = () => {
   console.log('repo list')
   return (
     <SafeAreaView>
+      <Text style = {styles.text}>
     <FlatList
       data={repositories}
-      ItemSeparatorComponent={ItemSeparator}
       renderItem = {renderItem}
+      ItemSeparatorComponent={ItemSeparator}
       keyExtractor = {item => item.id}
       
       // other props
     />
+    </Text>
     </SafeAreaView>
   );
 };
