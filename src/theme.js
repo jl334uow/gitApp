@@ -16,7 +16,7 @@ const theme = {
         bold: '700'
     },
     margin: {
-        body: 10,
+        body: 3,
         subheading: 5
     }
 }

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import {SafeAreaView, FlatList, View ,StyleSheet } from 'react-native';
+import {FlatList, View ,StyleSheet } from 'react-native';
 import RepositoryItem from './RepositoryItem.jsx';
-import Text from './Text.jsx';
 const styles = StyleSheet.create({
   separator: {
-    height: 10
+    height: 10,
+    backgroundColor: '#e1e4e8'
   },
 });
 
@@ -70,26 +70,21 @@ ratingAverage = {item.ratingAverage}
 ownerAvatarUrl = {item.ownerAvatarUrl}
 />
   )
-}
+};
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
 const RepositoryList = () => {
   console.log('repo list')
   return (
-    <SafeAreaView>
-      <Text style = {styles.text}>
     <FlatList
       data={repositories}
       renderItem = {renderItem}
       ItemSeparatorComponent={ItemSeparator}
       keyExtractor = {item => item.id}
-      
       // other props
     />
-    </Text>
-    </SafeAreaView>
-  );
+  )
 };
 
 export default RepositoryList;
