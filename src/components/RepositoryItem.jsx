@@ -35,9 +35,23 @@ const RepositoryItem = (props) =>{
           flex: 1,
           flexWrap: 'wrap',
           paddingBottom: 5
+        },
+        details: {
+          flexDirection: 'row',
+          textAlign: 'center',
+          justifyContent: 'space-evenly'
+        },
+        number: {
+          fontWeight: '700',
+          textAlign: 'center'
         }
 
       });
+
+    const kFormatter = (num) => {
+      return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.sign(num)*Math.abs(num)
+    };
+
     return(
         <View style = {styles.container}>
           <View style = {styles.main}>
@@ -50,12 +64,24 @@ const RepositoryItem = (props) =>{
               </View>
             </View>
           </View>
-          <Text >
-            <Text color = 'primary' >Stars: {props.stargazersCount}</Text>
-            <Text color = 'primary'>Forks: {props.forksCount}</Text>
-            <Text color = 'primary'>Reviews: {props.reviewCount}</Text>
-            <Text color = 'primary'>Rating: {props.ratingAverage}</Text>
-          </Text>
+          <View style = {styles.details}>
+            <View>
+              <Text style = {styles.number}>{kFormatter(props.stargazersCount)}</Text>
+              <Text>Stars</Text>
+            </View>
+            <View>
+              <Text style = {styles.number}>{kFormatter(props.forksCount)}</Text>
+              <Text>Forks</Text>
+            </View>
+            <View>
+              <Text style = {styles.number}>{props.reviewCount}</Text>
+              <Text>Reviews</Text>
+            </View>
+            <View>
+              <Text style = {styles.number}>{props.ratingAverage}</Text>
+              <Text>Rating</Text>
+            </View>
+          </View>
         </View>
     )
   };
